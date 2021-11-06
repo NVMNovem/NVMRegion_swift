@@ -13,6 +13,7 @@ import Foundation
  - note: `Alpha2Code`'s are the same as **country codes**
  */
 public enum Alpha2Code: String, CaseIterable {
+    
     /**
      The `Alpha2Code` for **Afghanistan**.
      */
