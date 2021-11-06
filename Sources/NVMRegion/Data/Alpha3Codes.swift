@@ -8,9 +8,9 @@
 import Foundation
 
 /**
- All `Alpha3Code`'s for each `Country`.
+ All `Alpha3Code`s for each `Country`.
  
- - note: `Alpha3Code`'s are the same as the 3 character **country codes**
+ - note: `Alpha3Code`s are the same as the 3 character **country codes**
  */
 public enum Alpha3Code: String, CaseIterable {
     
