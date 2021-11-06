@@ -75,19 +75,18 @@ final class NVMRegionTests: XCTestCase {
         XCTAssert(allNumerics.count == Numeric.allCases.count, "There is a Numeric not unique in the \"NVMRegion.numeric(country:)\" function. \r \(wrongNumerics)")
     }
     
-    func testCountryInit1() throws {
-        XCTAssertEqual(try? Country(country: "belgium"), .Belgium, "Country function \"init(country:)\" is broken.")
-        XCTAssertEqual(try? Country(country: "The British Indian Ocean Territory"), .BritishIndianOceanTerritory, "Country function \"init(country:)\" is broken.")
-        XCTAssertEqual(try? Country(country: "NorthernMarianaIslands"), .NorthernMarianaIslands, "Country function \"init(country:)\" is broken.")
-        XCTAssertEqual(try? Country(country: "JErsey"), .Jersey, "Country function \"init(country:)\" is broken.")
-        XCTAssertEqual(try? Country(country: "newzēālānd"), .NewZealand, "Country function \"init(country:)\" is broken.")
-    }
-    func testCountryInit2() throws {
+    func testCountryInit() throws {
         XCTAssertEqual(Country("Bëlg"), .Belgium, "Country function \"init(_:standard:)\" is broken.")
         XCTAssertEqual(Country("The British Indian Ocean"), .BritishIndianOceanTerritory, "Country function \"init(_:standard:)\" is broken.")
-        XCTAssertEqual(Country("Mariana"), .NorthernMarianaIslands, "Country function \"init(_:standard:)\" is broken.")
         XCTAssertEqual(Country("JErs"), .Jersey, "Country function \"init(_:standard:)\" is broken.")
+        XCTAssertEqual(Country("Mariana"), .NorthernMarianaIslands, "Country function \"init(_:standard:)\" is broken.")
         XCTAssertEqual(Country("Zēālānd"), .NewZealand, "Country function \"init(_:standard:)\" is broken.")
+        
+        XCTAssertEqual(Country(countryCode: "BE"), .Belgium, "Country function \"init(countryCode:)\" is broken.")
+        XCTAssertEqual(Country(countryCode: "IO"), .BritishIndianOceanTerritory, "Country function \"init(countryCode:)\" is broken.")
+        XCTAssertEqual(Country(countryCode: "JE"), .Jersey, "Country function \"init(countryCode:)\" is broken.")
+        XCTAssertEqual(Country(countryCode: "MP"), .NorthernMarianaIslands, "Country function \"init(countryCode:)\" is broken.")
+        XCTAssertEqual(Country(countryCode: "NZ"), .NewZealand, "Country function \"init(countryCode:)\" is broken.")
     }
     
     func testLocalCountries() throws {

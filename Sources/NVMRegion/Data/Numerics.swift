@@ -258,3 +258,97 @@ public enum Numeric: String, CaseIterable {
     case N894 = "894"
     case N716 = "716"
 }
+
+extension Numeric {
+    /**
+     Use this initializer to create an `Numeric` from a `String`.
+     */
+    public init?(_ numeric: String) {
+        if let rawNumeric = Numeric(rawValue: numeric) {
+            self = rawNumeric
+        } else {
+            if let newNumeric = Numeric.allCases.first(where: { $0.equalsTo(numeric: numeric) }) {
+                self = newNumeric
+            } else {
+                return nil
+            }
+        }
+    }
+    
+    /**
+     Use this initializer to create an `Numeric` from an `Int`.
+     */
+    public init?(_ numeric: Int) {
+        if let numericFromString = Numeric(numeric.numeric) {
+            self = numericFromString
+        } else {
+            return nil
+        }
+    }
+    
+    /**
+     Use this initializer to create an `Numeric` from a `String`.
+     */
+    public init(_ numeric: String, standard: Numeric) {
+        self = Numeric(numeric) ?? standard
+    }
+    
+    /**
+     Use this initializer to create an `Numeric` from a `Int`.
+     */
+    public init(_ numeric: Int, standard: Numeric) {
+        self = Numeric(numeric) ?? standard
+    }
+}
+
+extension Numeric {
+    public var country: Country {
+        var returnCountry: Country? = nil
+        for country in Country.allCases {
+            if country.numeric == self {
+                returnCountry = country
+                break
+            }
+        }
+        return returnCountry!
+    }
+    
+    public func equalsTo(numeric: String) -> Bool {
+        return self.rawValue.comparableNumeric == numeric.comparableNumeric
+    }
+    
+    public func equalsTo(numeric: Int) -> Bool {
+        return self.rawValue.comparableNumeric == numeric.numeric.comparableNumeric
+    }
+}
+
+extension String {
+    fileprivate var comparableNumeric: String {
+        var comparableNumeric = self.lowercased()
+        comparableNumeric = comparableNumeric.replacingOccurrences(of: ",", with: "")
+        comparableNumeric = comparableNumeric.replacingOccurrences(of: "-", with: "")
+        comparableNumeric = comparableNumeric.replacingOccurrences(of: "_", with: "")
+        
+        comparableNumeric = comparableNumeric.replacingOccurrences(of: " ", with: "")
+        
+        return comparableNumeric
+    }
+}
+
+extension Int {
+    public var numeric: String {
+        let intStr = String(self)
+        if intStr.count == 2 {
+            return "0" + intStr
+        }
+        else if intStr.count == 1 {
+            return "00" + intStr
+        }
+        else if intStr.count == 0 {
+            return "000"
+        }
+        else {
+            return String(intStr.prefix(3))
+        }
+    }
+}

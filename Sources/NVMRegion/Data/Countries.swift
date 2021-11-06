@@ -54,7 +54,7 @@ public enum Country: String, CaseIterable {
     case Chad = "Chad"
     case Chile = "Chile"
     case China = "China"
-    case ChristmasIsland = "ChristmasIsland"
+    case ChristmasIsland = "Christmas Island"
     case CocosIslands = "Cocos Islands"
     case Colombia = "Colombia"
     case Comoros = "Comoros"
@@ -177,7 +177,7 @@ public enum Country: String, CaseIterable {
     case Oman = "Oman"
     case Pakistan = "Pakistan"
     case Palau = "Palau"
-    case Palestine = "Palestine, State of"
+    case Palestine = "Palestine"
     case Panama = "Panama"
     case PapuaNewGuinea = "Papua New Guinea"
     case Paraguay = "Paraguay"
@@ -227,7 +227,7 @@ public enum Country: String, CaseIterable {
     case SyrianArabRepublic = "Syrian Arab Republic"
     case Taiwan = "Taiwan"
     case Tajikistan = "Tajikistan"
-    case Tanzania = "Tanzania, United Republic of"
+    case Tanzania = "United Republic of Tanzania"
     case Thailand = "Thailand"
     case TimorLeste = "Timor-Leste"
     case Togo = "Togo"
@@ -260,90 +260,90 @@ public enum Country: String, CaseIterable {
 }
 
 extension Country {
-    enum Error: Swift.Error {
-        case invalid
-    }
-    
     /**
-     Use this method to create a Country from an string.
-     throws
-     */
-    public init(country: String) throws {
-        guard let newCountry = Country.allCases.first(where: { $0.equalsTo(country: country) }) else {
-            throw Error.invalid
-        }
-        self = newCountry
-    }
-    
-    /**
-     Use this method to create a Country from an string. This method will also try to find the most fitted country
+     Use this initializer to create a `Country` from a `String`. This method will also try to find the most fitted `Country`
      if your string isn't the exact same as **the country name**.
      */
     public init?(_ country: String) {
-        if let newCountry = Country.allCases.first(where: { $0.equalsTo(country: country) }) {
-            self = newCountry
+        if let rawCountry = Country(rawValue: country) {
+            self = rawCountry
         } else {
-            var aliasCountry: Country? = nil
-            for alias in NVMRegion.getCountryAliases() {
-                if alias.key.comparableCountry.contains(country.comparableCountry) {
-                    aliasCountry = alias.value
-                    break
-                }
-            }
-            if let aliasCountry = aliasCountry {
-                self = aliasCountry
+            if let newCountry = Country.allCases.first(where: { $0.equalsTo(country: country) }) {
+                self = newCountry
             } else {
-                var guessedCountry: Country? = nil
-                for i in 0...country.count {
-                    if guessedCountry == nil {
-                        let index = country.index(country.startIndex, offsetBy: (country.count - i))
-                        let subStringCountry = String(country[..<index])
-                        if subStringCountry.count > 3 {
-                            for acCountry in Country.allCases {
-                                if guessedCountry == nil {
-                                    if acCountry.rawValue.comparableCountry.contains(subStringCountry.comparableCountry) {
-                                        guessedCountry = acCountry
-                                        break
-                                    }
-                                } else {
-                                    break
-                                }
-                            }
-                        }
-                        
-                        let index2 = country.index(country.endIndex, offsetBy: -(country.count - i))
-                        let subStringCountry2 = String(country[index2...])
-                        if subStringCountry2.count > 3 {
-                            for acCountry2 in Country.allCases {
-                                if guessedCountry == nil {
-                                    if acCountry2.rawValue.comparableCountry.contains(subStringCountry2.comparableCountry) {
-                                        guessedCountry = acCountry2
-                                        break
-                                    }
-                                } else {
-                                    break
-                                }
-                            }
-                        }
-                    } else {
+                var aliasCountry: Country? = nil
+                for alias in NVMRegion.getCountryAliases() {
+                    if alias.key.comparableCountry.contains(country.comparableCountry) {
+                        aliasCountry = alias.value
                         break
                     }
                 }
-                if let guessedCountry = guessedCountry {
-                    self = guessedCountry
+                if let aliasCountry = aliasCountry {
+                    self = aliasCountry
                 } else {
-                    return nil
+                    var guessedCountry: Country? = nil
+                    for i in 0...country.count {
+                        if guessedCountry == nil {
+                            let index = country.index(country.startIndex, offsetBy: (country.count - i))
+                            let subStringCountry = String(country[..<index])
+                            if subStringCountry.count > 3 {
+                                for acCountry in Country.allCases {
+                                    if guessedCountry == nil {
+                                        if acCountry.rawValue.comparableCountry.contains(subStringCountry.comparableCountry) {
+                                            guessedCountry = acCountry
+                                            break
+                                        }
+                                    } else {
+                                        break
+                                    }
+                                }
+                            }
+                            
+                            let index2 = country.index(country.endIndex, offsetBy: -(country.count - i))
+                            let subStringCountry2 = String(country[index2...])
+                            if subStringCountry2.count > 3 {
+                                for acCountry2 in Country.allCases {
+                                    if guessedCountry == nil {
+                                        if acCountry2.rawValue.comparableCountry.contains(subStringCountry2.comparableCountry) {
+                                            guessedCountry = acCountry2
+                                            break
+                                        }
+                                    } else {
+                                        break
+                                    }
+                                }
+                            }
+                        } else {
+                            break
+                        }
+                    }
+                    if let guessedCountry = guessedCountry {
+                        self = guessedCountry
+                    } else {
+                        return nil
+                    }
                 }
             }
         }
     }
     
     /**
-     Use this method to create a Country from an string. This method will also try to find the most fitted country
+     Use this initializer to create a `Country` from a `String`. This method will also try to find the most fitted `Country`
      if your string isn't the exact same as **the country name**.
      */
     public init(_ country: String, standard: Country) {
         self = Country(country) ?? standard
+    }
+    
+    /**
+     Use this initializer to create a `Country` from a country code.
+     */
+    public init?(countryCode: String) {
+        if let alpha2Code = Alpha2Code(rawValue: countryCode) {
+            self = alpha2Code.country
+        } else {
+            return nil
+        }
     }
 }
 
@@ -363,12 +363,6 @@ extension Country {
     
     public func equalsTo(country: String) -> Bool {
         return self.rawValue.comparableCountry == country.comparableCountry
-    }
-}
-
-extension Country: CustomStringConvertible {
-    public var description: String {
-        return "\r  \(self.rawValue)\r  Alpha2 Code: \(self.alpha2Code)\r  Alpha3 Code: \(self.alpha3Code)\r  Numeric: \(self.numeric)\r"
     }
 }
 
@@ -428,5 +422,11 @@ extension String {
         comparableCountry = comparableCountry.replacingOccurrences(of: "ū", with: "u")
         
         return comparableCountry
+    }
+}
+
+extension Country: CustomStringConvertible {
+    public var description: String {
+        return "\r  \(self.rawValue)\r  Alpha2 Code: \(self.alpha2Code)\r  Alpha3 Code: \(self.alpha3Code)\r  Numeric: \(self.numeric)\r"
     }
 }

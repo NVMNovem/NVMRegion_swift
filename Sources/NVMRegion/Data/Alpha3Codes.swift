@@ -258,3 +258,57 @@ public enum Alpha3Code: String, CaseIterable {
     case ZMB
     case ZWE
 }
+
+extension Alpha3Code {
+    /**
+     Use this initializer to create an `Alpha3Code` from a `String`.
+     */
+    public init?(_ alpha3code: String) {
+        if let rawAlpha3Code = Alpha3Code(rawValue: alpha3code) {
+            self = rawAlpha3Code
+        } else {
+            if let newAlpha3Code = Alpha3Code.allCases.first(where: { $0.equalsTo(alpha3code: alpha3code) }) {
+                self = newAlpha3Code
+            } else {
+                return nil
+            }
+        }
+    }
+    
+    /**
+     Use this initializer to create an `Alpha3Code` from a `String`.
+     */
+    public init(_ alpha3code: String, standard: Alpha3Code) {
+        self = Alpha3Code(alpha3code) ?? standard
+    }
+}
+
+extension Alpha3Code {
+    public var country: Country {
+        var returnCountry: Country? = nil
+        for country in Country.allCases {
+            if country.alpha3Code == self {
+                returnCountry = country
+                break
+            }
+        }
+        return returnCountry!
+    }
+    
+    public func equalsTo(alpha3code: String) -> Bool {
+        return self.rawValue.comparableAlpha3Code == alpha3code.comparableAlpha3Code
+    }
+}
+
+extension String {
+    fileprivate var comparableAlpha3Code: String {
+        var comparableAlpha3Code = self.lowercased()
+        comparableAlpha3Code = comparableAlpha3Code.replacingOccurrences(of: ",", with: "")
+        comparableAlpha3Code = comparableAlpha3Code.replacingOccurrences(of: "-", with: "")
+        comparableAlpha3Code = comparableAlpha3Code.replacingOccurrences(of: "_", with: "")
+        
+        comparableAlpha3Code = comparableAlpha3Code.replacingOccurrences(of: " ", with: "")
+        
+        return comparableAlpha3Code
+    }
+}
