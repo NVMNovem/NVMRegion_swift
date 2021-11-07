@@ -1347,19 +1347,69 @@ extension Country {
 }
 
 extension Country {
+    
+    /**
+     Gives you the country `String` from your `Country`
+     
+     - returns: A country `String`
+     */
+    public var country: String {
+        return self.rawValue
+    }
+    
+    /**
+     Gives you the cleaned country `String` from your `Country`
+     
+     - returns: A cleaned country `String`
+     
+     - important: This will replace special characters with their corresponding letter from your country string.
+                  E.G. "België" will be converted to "Belgie"
+     */
+    public var cleanedCountry: String {
+        return self.rawValue.cleanedString
+    }
+    
+    /**
+     Gives you the country code `String` from your `Country`
+     
+     - returns: A country code `String`
+     */
     public var countryCode: String {
         return self.alpha2Code.rawValue
     }
+    
+    /**
+     Gives you the `Alpha2Code` from your `Country`
+     
+     - returns: An `Alpha2Code` object
+     */
     public var alpha2Code: Alpha2Code {
         return NVMRegion.alpha2Code(country: self)
     }
+    
+    /**
+     Gives you the `Alpha3Code` from your `Country`
+     
+     - returns: An `Alpha3Code` object
+     */
     public var alpha3Code: Alpha3Code {
         return NVMRegion.alpha3Code(country: self)
     }
+    
+    /**
+     Gives you the `Numeric` from your `Country`
+     
+     - returns: A `Numeric` object
+     */
     public var numeric: Numeric {
         return NVMRegion.numeric(country: self)
     }
     
+    /**
+     Compares the `Country` with the given country `String`
+     
+     - returns: A `Bool` indicating if the comparisson is correct
+     */
     public func equalsTo(country: String) -> Bool {
         return self.rawValue.comparableCountry == country.comparableCountry
     }
@@ -1381,46 +1431,52 @@ extension String {
         
         comparableCountry = comparableCountry.replacingOccurrences(of: " ", with: "")
         
-        comparableCountry = comparableCountry.replacingOccurrences(of: "á", with: "a")
-        comparableCountry = comparableCountry.replacingOccurrences(of: "ä", with: "a")
-        comparableCountry = comparableCountry.replacingOccurrences(of: "â", with: "a")
-        comparableCountry = comparableCountry.replacingOccurrences(of: "à", with: "a")
-        comparableCountry = comparableCountry.replacingOccurrences(of: "æ", with: "a")
-        comparableCountry = comparableCountry.replacingOccurrences(of: "ã", with: "a")
-        comparableCountry = comparableCountry.replacingOccurrences(of: "å", with: "a")
-        comparableCountry = comparableCountry.replacingOccurrences(of: "ā", with: "a")
-        comparableCountry = comparableCountry.replacingOccurrences(of: "ç", with: "c")
-        comparableCountry = comparableCountry.replacingOccurrences(of: "é", with: "e")
-        comparableCountry = comparableCountry.replacingOccurrences(of: "ë", with: "e")
-        comparableCountry = comparableCountry.replacingOccurrences(of: "ê", with: "e")
-        comparableCountry = comparableCountry.replacingOccurrences(of: "è", with: "e")
-        comparableCountry = comparableCountry.replacingOccurrences(of: "ę", with: "e")
-        comparableCountry = comparableCountry.replacingOccurrences(of: "ė", with: "e")
-        comparableCountry = comparableCountry.replacingOccurrences(of: "ē", with: "e")
-        comparableCountry = comparableCountry.replacingOccurrences(of: "í", with: "i")
-        comparableCountry = comparableCountry.replacingOccurrences(of: "ï", with: "i")
-        comparableCountry = comparableCountry.replacingOccurrences(of: "ì", with: "i")
-        comparableCountry = comparableCountry.replacingOccurrences(of: "î", with: "i")
-        comparableCountry = comparableCountry.replacingOccurrences(of: "į", with: "i")
-        comparableCountry = comparableCountry.replacingOccurrences(of: "ī", with: "i")
-        comparableCountry = comparableCountry.replacingOccurrences(of: "j́", with: "j")
-        comparableCountry = comparableCountry.replacingOccurrences(of: "ñ", with: "n")
-        comparableCountry = comparableCountry.replacingOccurrences(of: "ń", with: "n")
-        comparableCountry = comparableCountry.replacingOccurrences(of: "ó", with: "o")
-        comparableCountry = comparableCountry.replacingOccurrences(of: "ö", with: "o")
-        comparableCountry = comparableCountry.replacingOccurrences(of: "ô", with: "o")
-        comparableCountry = comparableCountry.replacingOccurrences(of: "ò", with: "o")
-        comparableCountry = comparableCountry.replacingOccurrences(of: "õ", with: "o")
-        comparableCountry = comparableCountry.replacingOccurrences(of: "œ", with: "o")
-        comparableCountry = comparableCountry.replacingOccurrences(of: "ø", with: "o")
-        comparableCountry = comparableCountry.replacingOccurrences(of: "ō", with: "o")
-        comparableCountry = comparableCountry.replacingOccurrences(of: "ú", with: "u")
-        comparableCountry = comparableCountry.replacingOccurrences(of: "ü", with: "u")
-        comparableCountry = comparableCountry.replacingOccurrences(of: "û", with: "u")
-        comparableCountry = comparableCountry.replacingOccurrences(of: "ù", with: "u")
-        comparableCountry = comparableCountry.replacingOccurrences(of: "ū", with: "u")
+        return comparableCountry.cleanedString
+    }
+    
+    internal var cleanedString: String {
+        var cleanedString = self
         
-        return comparableCountry
+        cleanedString = cleanedString.replacingOccurrences(of: "á", with: "a")
+        cleanedString = cleanedString.replacingOccurrences(of: "ä", with: "a")
+        cleanedString = cleanedString.replacingOccurrences(of: "â", with: "a")
+        cleanedString = cleanedString.replacingOccurrences(of: "à", with: "a")
+        cleanedString = cleanedString.replacingOccurrences(of: "æ", with: "a")
+        cleanedString = cleanedString.replacingOccurrences(of: "ã", with: "a")
+        cleanedString = cleanedString.replacingOccurrences(of: "å", with: "a")
+        cleanedString = cleanedString.replacingOccurrences(of: "ā", with: "a")
+        cleanedString = cleanedString.replacingOccurrences(of: "ç", with: "c")
+        cleanedString = cleanedString.replacingOccurrences(of: "é", with: "e")
+        cleanedString = cleanedString.replacingOccurrences(of: "ë", with: "e")
+        cleanedString = cleanedString.replacingOccurrences(of: "ê", with: "e")
+        cleanedString = cleanedString.replacingOccurrences(of: "è", with: "e")
+        cleanedString = cleanedString.replacingOccurrences(of: "ę", with: "e")
+        cleanedString = cleanedString.replacingOccurrences(of: "ė", with: "e")
+        cleanedString = cleanedString.replacingOccurrences(of: "ē", with: "e")
+        cleanedString = cleanedString.replacingOccurrences(of: "í", with: "i")
+        cleanedString = cleanedString.replacingOccurrences(of: "ï", with: "i")
+        cleanedString = cleanedString.replacingOccurrences(of: "ì", with: "i")
+        cleanedString = cleanedString.replacingOccurrences(of: "î", with: "i")
+        cleanedString = cleanedString.replacingOccurrences(of: "į", with: "i")
+        cleanedString = cleanedString.replacingOccurrences(of: "ī", with: "i")
+        cleanedString = cleanedString.replacingOccurrences(of: "j́", with: "j")
+        cleanedString = cleanedString.replacingOccurrences(of: "ñ", with: "n")
+        cleanedString = cleanedString.replacingOccurrences(of: "ń", with: "n")
+        cleanedString = cleanedString.replacingOccurrences(of: "ó", with: "o")
+        cleanedString = cleanedString.replacingOccurrences(of: "ö", with: "o")
+        cleanedString = cleanedString.replacingOccurrences(of: "ô", with: "o")
+        cleanedString = cleanedString.replacingOccurrences(of: "ò", with: "o")
+        cleanedString = cleanedString.replacingOccurrences(of: "õ", with: "o")
+        cleanedString = cleanedString.replacingOccurrences(of: "œ", with: "o")
+        cleanedString = cleanedString.replacingOccurrences(of: "ø", with: "o")
+        cleanedString = cleanedString.replacingOccurrences(of: "ō", with: "o")
+        cleanedString = cleanedString.replacingOccurrences(of: "ú", with: "u")
+        cleanedString = cleanedString.replacingOccurrences(of: "ü", with: "u")
+        cleanedString = cleanedString.replacingOccurrences(of: "û", with: "u")
+        cleanedString = cleanedString.replacingOccurrences(of: "ù", with: "u")
+        cleanedString = cleanedString.replacingOccurrences(of: "ū", with: "u")
+        
+        return cleanedString
     }
 }
 
