@@ -96,4 +96,12 @@ final class NVMRegionTests: XCTestCase {
             }
         }
     }
+    
+    func testCountryAliases() throws {
+        let randomString = String((0..<30).map{ _ in "abcdefghijklmnopqrstuvwxyz ABCDEFGHIJKLMNOPQRSTUVWXYZ".randomElement()! })
+        print("randomString: \(randomString)")
+        NVMRegion.implementCountryAliases([randomString : .Afghanistan])
+        
+        XCTAssertEqual(Country(randomString), .Afghanistan, "Country Aliases failed. randomString: \"\(randomString)\"")
+    }
 }
