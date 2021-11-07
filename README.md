@@ -16,7 +16,7 @@ This project is created and maintained by Novem.
 - [Installation](#installation)
   - [Swift Package Manager](#swift-package-manager)
 - [Usage Guide](#usage-guide)
-  - [Code](#coder)
+  - [Code](#code)
 
 ## Installation
 
@@ -65,7 +65,7 @@ struct MyApp: App {
 
 This will make it possible to create a **Country()** object from "België". This is not required for default country names. **NVMRegion** also tries to find the most fitted country for each given string.
 ```swift
-  Country("België")
+Country("België")
 ```
 
 This will return a valid **Country()** object
