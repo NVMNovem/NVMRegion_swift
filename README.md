@@ -4,7 +4,7 @@
 
 ---
 
-A pure Swift library that allows your to easily convert Countries to Country Codes and Country Codes to Countries.
+A pure Swift library that allows you to easily convert Countries to Country Codes and Country Codes to Countries.
 
 There is also support for other types. 
 Currently all supported types are **Countries**, **Alpha2Codes**, **Alpha3Codes** and **Numerics**.
