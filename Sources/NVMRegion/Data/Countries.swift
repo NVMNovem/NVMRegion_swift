@@ -1397,6 +1397,15 @@ extension Country {
     }
     
     /**
+     Gives you the `Continent` from your `Country`
+     
+     - returns: A `Continent` object
+     */
+    public var continent: Continent {
+        return NVMRegion.continent(country: self)
+    }
+    
+    /**
      Gives you the `Numeric` from your `Country`
      
      - returns: A `Numeric` object
@@ -1482,6 +1491,6 @@ extension String {
 
 extension Country: CustomStringConvertible {
     public var description: String {
-        return "\r  \(self.rawValue)\r  Alpha2 Code: \(self.alpha2Code)\r  Alpha3 Code: \(self.alpha3Code)\r  Numeric: \(self.numeric)\r"
+        return "\r  \(self.rawValue)\r  Continent: \(self.continent)\r  Alpha2 Code: \(self.alpha2Code)\r  Alpha3 Code: \(self.alpha3Code)\r  Numeric: \(self.numeric)\r"
     }
 }
