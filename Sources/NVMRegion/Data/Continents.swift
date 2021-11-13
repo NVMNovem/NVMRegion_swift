@@ -49,6 +49,7 @@ public enum Continent: String, CaseIterable {
 }
 
 extension Continent {
+    
     /**
      Use this initializer to create an `Continent` from a `String`.
      */
@@ -73,6 +74,7 @@ extension Continent {
 }
 
 extension Continent {
+    
     public var country: Country {
         var returnCountry: Country? = nil
         for country in Country.allCases {

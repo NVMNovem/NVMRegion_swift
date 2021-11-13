@@ -1259,6 +1259,7 @@ public enum Numeric: String, CaseIterable {
 }
 
 extension Numeric {
+    
     /**
      Use this initializer to create an `Numeric` from a `String`.
      */
@@ -1301,6 +1302,7 @@ extension Numeric {
 }
 
 extension Numeric {
+    
     public var country: Country {
         var returnCountry: Country? = nil
         for country in Country.allCases {

@@ -29,7 +29,7 @@ public struct NVMRegion {
      
      - parameter country: A `Country` created by the `NVMRegion` Package.
      
-     - returns: An `Alpha2Code` matching the current country
+     - returns: An `Alpha2Code` matching the given country
      */
     public static func alpha2Code(country: Country) -> Alpha2Code {
         switch country {
@@ -539,7 +539,7 @@ public struct NVMRegion {
      
      - parameter country: A `Country` created by the `NVMRegion` Package.
      
-     - returns: An `Alpha3Code` matching the current country
+     - returns: An `Alpha3Code` matching the given country
      */
     public static func alpha3Code(country: Country) -> Alpha3Code {
         switch country {
@@ -1049,7 +1049,7 @@ public struct NVMRegion {
      
      - parameter country: A `Country` created by the `NVMRegion` Package.
      
-     - returns: An `Alpha2Code` matching the current country
+     - returns: An `Alpha2Code` matching the given country
      */
     public static func continent(country: Country) -> Continent {
         switch country {
@@ -1559,7 +1559,7 @@ public struct NVMRegion {
      
      - parameter country: A `Country` created by the `NVMRegion` Package.
      
-     - returns: A `Numeric` matching the current country
+     - returns: A `Numeric` matching the given country
      */
     public static func numeric(country: Country) -> Numeric {
         switch country {
@@ -2061,6 +2061,96 @@ public struct NVMRegion {
             return .N894
         case .Zimbabwe:
             return .N716
+        }
+    }
+    
+    /**
+     Will give you the `LanguageCode` for the specified language.
+     
+     - parameter language: A `Language` created by the `NVMRegion` Package.
+     
+     - returns: A `LanguageCode` matching the given language
+     */
+    public static func languageCode(language: Language) -> LanguageCode {
+        switch language {
+        case .Arabic:
+            return .ar
+        case .Catalan:
+            return .ca
+        case .ChineseHK:
+            return .zhHK
+        case .ChineseHans:
+            return .zhHans
+        case .ChineseHant:
+            return .zhHant
+        case .Croatian:
+            return .hr
+        case .Czech:
+            return .cs
+        case .Danish:
+            return .da
+        case .Dutch:
+            return .nl
+        case .EnglishAU:
+            return .enAU
+        case .EnglishIN:
+            return .enIN
+        case .EnglishGB:
+            return .enGB
+        case .Finnish:
+            return .fi
+        case .French:
+            return .fr
+        case .FrenchCA:
+            return .frCA
+        case .German:
+            return .de
+        case .Greek:
+            return .el
+        case .Hebrew:
+            return .he
+        case .Hindi:
+            return .hi
+        case .Hungarian:
+            return .hu
+        case .Indonesian:
+            return .id
+        case .Italian:
+            return .it
+        case .Japanese:
+            return .ja
+        case .Korean:
+            return .ko
+        case .Malay:
+            return .ms
+        case .NorwegianBokmal:
+            return .nb
+        case .Polish:
+            return .pl
+        case .PortugueseBR:
+            return .ptBR
+        case .PortuguesePT:
+            return .ptPT
+        case .Romanian:
+            return .ro
+        case .Russian:
+            return .ru
+        case .Slovak:
+            return .sk
+        case .Spanish:
+            return .es
+        case .Spanish419:
+            return .es419
+        case .Swedish:
+            return .sv
+        case .Thai:
+            return .th
+        case .Turkish:
+            return .tr
+        case .Ukrainian:
+            return .uk
+        case .Vietnamese:
+            return .vi
         }
     }
 }

@@ -1,7 +1,7 @@
 import XCTest
 @testable import NVMRegion
 
-final class NVMRegionTests: XCTestCase {    
+final class NVMRegionTests: XCTestCase {
     func testCountriesAmount() throws {
         XCTAssert(Country.allCases.count == Alpha2Code.allCases.count, "The amount of Countries and Alpha2 Codes are not the same.")
         
@@ -102,5 +102,9 @@ final class NVMRegionTests: XCTestCase {
         NVMRegion.implementCountryAliases([randomString : .Belgium])
         
         XCTAssertEqual(Country(randomString), .Belgium, "Country Aliases failed. randomString: \"\(randomString)\"")
+    }
+    
+    func testLanguagesAmount() throws {
+        XCTAssert(Language.allCases.count == LanguageCode.allCases.count, "The amount of Languages and Language Codes are not the same.")
     }
 }

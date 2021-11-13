@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import SwiftUI
 
 /**
  All `Countries` for each `Country`.
@@ -1259,6 +1260,7 @@ public enum Country: String, CaseIterable {
 }
 
 extension Country {
+    
     /**
      Use this initializer to create a `Country` from a `String`. This method will also try to find the most fitted `Country`
      if your string isn't the exact same as **the country name**.
@@ -1412,6 +1414,18 @@ extension Country {
      */
     public var numeric: Numeric {
         return NVMRegion.numeric(country: self)
+    }
+    
+    
+    /**
+     Gives you the **flag image** from your `Country`
+     
+     - returns: A `Image` object
+     
+     - note: If no `Image` is found, it will rerturn a default `Image`
+     */
+    public var image: Image {
+        return Image("\(self.cleanedCountry)", bundle: .module)
     }
     
     /**

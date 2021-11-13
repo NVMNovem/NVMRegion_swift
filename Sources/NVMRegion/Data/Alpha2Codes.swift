@@ -1261,6 +1261,7 @@ public enum Alpha2Code: String, CaseIterable {
 }
 
 extension Alpha2Code {
+    
     /**
      Use this initializer to create an `Alpha2Code` from a `String`.
      */
@@ -1285,6 +1286,7 @@ extension Alpha2Code {
 }
 
 extension Alpha2Code {
+    
     public var country: Country {
         var returnCountry: Country? = nil
         for country in Country.allCases {

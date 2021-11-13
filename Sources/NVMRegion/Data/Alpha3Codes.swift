@@ -1261,6 +1261,7 @@ public enum Alpha3Code: String, CaseIterable {
 }
 
 extension Alpha3Code {
+    
     /**
      Use this initializer to create an `Alpha3Code` from a `String`.
      */
@@ -1285,6 +1286,7 @@ extension Alpha3Code {
 }
 
 extension Alpha3Code {
+    
     public var country: Country {
         var returnCountry: Country? = nil
         for country in Country.allCases {
