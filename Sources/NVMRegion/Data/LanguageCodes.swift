@@ -58,6 +58,11 @@ public enum LanguageCode: String, CaseIterable {
     case nl = "nl"
     
     /**
+     The `LanguageCode` for **English**.
+     */
+    case en = "en"
+    
+    /**
      The `LanguageCode` for **English (Australia)**.
      */
     case enAU = "en-AU"

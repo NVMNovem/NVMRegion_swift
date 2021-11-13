@@ -58,6 +58,11 @@ public enum Language: String, CaseIterable {
     case Dutch = "Dutch"
     
     /**
+     The `Language` for **English**.
+     */
+    case English = "English"
+    
+    /**
      The `Language` for **English (Australia)**.
      */
     case EnglishAU = "English (Australia)"
