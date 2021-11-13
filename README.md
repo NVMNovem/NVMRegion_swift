@@ -72,6 +72,7 @@ This will return a valid **Country()** object
 ```swift
 (
 Belgium
+Continent: Europe
 Alpha2 Code: BE
 Alpha3 Code: BEL
 Numeric: N056
