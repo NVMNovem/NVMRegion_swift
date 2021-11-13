@@ -2091,6 +2091,8 @@ public struct NVMRegion {
             return .da
         case .Dutch:
             return .nl
+        case .English:
+            return .en
         case .EnglishAU:
             return .enAU
         case .EnglishIN:
