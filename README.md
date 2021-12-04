@@ -30,7 +30,7 @@ import PackageDescription
 let package = Package(
     name: "YOUR_PROJECT_NAME",
     dependencies: [
-        .package(url: "https://github.com/NVMNovem/NVMRegion", from: "1.0.0"),
+        .package(url: "https://github.com/NVMNovem/NVMRegion_swift", from: "1.0.0"),
     ]
 )
 ```
