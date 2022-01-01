@@ -1,10 +1,11 @@
 public struct NVMRegion {
     private static var countryAliases: [String : Country] = [
-        "Chagos Archipelago" : .BritishIndianOceanTerritory,
         "Cabo Verde" : .CapeVerde,
-        "Vatican City" : .HolySee,
+        "Chagos Archipelago" : .BritishIndianOceanTerritory,
         "Lao People's Democratic Republic" : .Laos,
-        "So. Georgia & So. Sandwich Isl." : .SouthGeorgiaAndTheSouthSandwichIslands
+        "So. Georgia & So. Sandwich Isl." : .SouthGeorgiaAndTheSouthSandwichIslands,
+        "United States" : .UnitedStatesOfAmerica,
+        "Vatican City" : .HolySee
     ]
     
     /**
