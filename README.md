@@ -30,7 +30,7 @@ import PackageDescription
 let package = Package(
     name: "YOUR_PROJECT_NAME",
     dependencies: [
-        .package(url: "https://github.com/NVMNovem/NVMRegion", from: "1.0.0"),
+        .package(url: "https://github.com/NVMNovem/NVMRegion_swift", from: "1.0.0"),
     ]
 )
 ```
@@ -45,7 +45,7 @@ search field. Then select the option that is most suited for your needs.
 
 ### Code
 
-To use **NVMRegion**, there is no initalizing required. If you want to add custom Country Aliases, you need to add the in the initalizing of your app.
+To use **NVMRegion**, there is no initalizing required. If you want to add custom Country Aliases, you need to add the next function in the initalizing of your app.
 Example use case for a custom country name for **Belgium**.
 The example will allow the translated version "België" to be converted to a **Country**: "Belgium".
 ```swift
