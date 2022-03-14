@@ -11,7 +11,7 @@ import SwiftUI
 /**
  All `Countries` for each `Country`.
  */
-public enum Country: String, CaseIterable {
+public enum Country: String, Codable, CaseIterable {
     
     /**
      The `Country` for **Afghanistan**.

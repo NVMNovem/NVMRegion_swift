@@ -10,7 +10,7 @@ import Foundation
 /**
  All `Continents` for each `Country`.
  */
-public enum Continent: String, CaseIterable {
+public enum Continent: String, Codable, CaseIterable {
     
     /**
      The `Continent` for **Africa**.

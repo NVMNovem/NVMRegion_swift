@@ -12,7 +12,7 @@ import Foundation
  
  - note: `Alpha3Code`s are the same as the 3 character **country codes**
  */
-public enum Alpha3Code: String, CaseIterable {
+public enum Alpha3Code: String, Codable, CaseIterable {
     
     /**
      The `Alpha3Code` for **Afghanistan**.

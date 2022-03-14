@@ -10,7 +10,7 @@ import Foundation
 /**
  All `Language Codes`.
  */
-public enum LanguageCode: String, CaseIterable {
+public enum LanguageCode: String, Codable, CaseIterable {
     
     /**
      The `LanguageCode` for **Arabic**.

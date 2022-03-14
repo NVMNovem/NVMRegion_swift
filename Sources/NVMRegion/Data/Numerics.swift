@@ -10,7 +10,7 @@ import Foundation
 /**
  All `Numeric`s for each `Country`.
  */
-public enum Numeric: String, CaseIterable {
+public enum Numeric: String, Codable, CaseIterable {
     
     /**
      The `Numeric` for **Afghanistan**.
