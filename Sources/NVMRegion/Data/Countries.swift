@@ -1339,7 +1339,9 @@ extension Country {
     /**
      Use this initializer to create a `Country` from a country code.
      */
-    public init?(countryCode: String) {
+    public init?(countryCode: String?) {
+        guard let countryCode = countryCode else { return nil }
+
         if let alpha2Code = Alpha2Code(rawValue: countryCode) {
             self = alpha2Code.country
         } else {
