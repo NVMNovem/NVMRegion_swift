@@ -1,3 +1,5 @@
+import Foundation
+
 public struct NVMRegion {
     private static var countryAliases: [String : Country] = [
         "Cabo Verde" : .CapeVerde,
@@ -23,6 +25,11 @@ public struct NVMRegion {
     
     internal static func getCountryAliases() -> [String : Country] {
         return self.countryAliases
+    }
+    
+    public static var currentCountry: Country? {
+        let localeCountryCode = Locale.current.regionCode
+        return Country(countryCode: localeCountryCode)
     }
     
     /**
