@@ -7,6 +7,7 @@ public struct NVMRegion {
         "Lao People's Democratic Republic" : .Laos,
         "So. Georgia & So. Sandwich Isl." : .SouthGeorgiaAndTheSouthSandwichIslands,
         "United States" : .UnitedStatesOfAmerica,
+        "U.S." : .UnitedStatesOfAmerica,
         "Vatican City" : .HolySee
     ]
     
