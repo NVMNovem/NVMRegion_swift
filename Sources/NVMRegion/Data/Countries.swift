@@ -1265,7 +1265,8 @@ extension Country {
      Use this initializer to create a `Country` from a `String`. This method will also try to find the most fitted `Country`
      if your string isn't the exact same as **the country name**.
      */
-    public init?(_ country: String) {
+    public init?(_ country: String?) {
+        guard let country = country else { return nil }
         if let rawCountry = Country(rawValue: country) {
             self = rawCountry
         } else {
@@ -1332,7 +1333,7 @@ extension Country {
      Use this initializer to create a `Country` from a `String`. This method will also try to find the most fitted `Country`
      if your string isn't the exact same as **the country name**.
      */
-    public init(_ country: String, standard: Country) {
+    public init(_ country: String?, standard: Country) {
         self = Country(country) ?? standard
     }
     
