@@ -11,7 +11,7 @@ import SwiftUI
 /**
  All `Countries` for each `Country`.
  */
-public enum Country: String, Codable, CaseIterable {
+public enum Country: String, CaseIterable {
     
     /**
      The `Country` for **Afghanistan**.
@@ -1259,7 +1259,30 @@ public enum Country: String, Codable, CaseIterable {
     case Zimbabwe = "Zimbabwe"
 }
 
+extension Country: Codable {
+    
+    public init(from decoder: Decoder) throws {
+        let container = try decoder.singleValueContainer()
+        let status = try container.decode(String.self)
+        switch status {
+        default:
+            self = try Country(country: status)
+        }
+    }
+}
+
 extension Country {
+    
+    /**
+     Use this initializer to create a `Country` from a `String`. This method will also try to find the most fitted `Country`
+     if your string isn't the exact same as **the country name**.
+     
+     - note: Will throw an error if no match is found.
+     */
+    public init(country: String?) throws {
+        guard let newCountry = Country(country) else { throw CountriesError.invalidCountryString }
+        self = newCountry
+    }
     
     /**
      Use this initializer to create a `Country` from a `String`. This method will also try to find the most fitted `Country`
