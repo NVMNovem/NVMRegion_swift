@@ -1259,6 +1259,10 @@ public enum Country: String, CaseIterable {
     case Zimbabwe = "Zimbabwe"
 }
 
+extension Country: Identifiable {
+    public var id: String { self.cleanedCountry }
+}
+
 extension Country: Codable {
     
     public init(from decoder: Decoder) throws {
