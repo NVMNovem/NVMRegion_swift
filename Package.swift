@@ -6,7 +6,7 @@ import PackageDescription
 let package = Package(
     name: "NVMRegion",
     platforms: [
-        .macOS(.v11), .iOS(.v13)
+        .macOS(.v11), .iOS(.v13), .tvOS(.v13)
     ],
     products: [
         .library(
